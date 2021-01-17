@@ -1,0 +1,19 @@
+{
+  "root": true,
+  "env": {
+    "node": false,
+    "browser": true
+  },
+  "extends": [
+    "plugin:vue/essential",
+    "prettier",
+    "prettier/vue",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": ["prettier", "@vue"],
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": 2020,
+    "parser": "babel-eslint"
+  }
+}

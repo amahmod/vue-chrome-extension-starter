@@ -1,0 +1,13 @@
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "chrome": 80
+        }
+      }
+    ]
+  ],
+  "plugins": ["@babel/plugin-proposal-optional-chaining"]
+}
