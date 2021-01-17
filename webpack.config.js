@@ -65,7 +65,7 @@ const config = {
     new HtmlWebpackPlugin({
       title: 'Options',
       template: './index.html',
-      filename: 'options.html',
+      filename: 'option.html',
       chunks: ['options'],
     }),
     new CopyWebpackPlugin({
