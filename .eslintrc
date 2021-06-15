@@ -1,16 +1,15 @@
 {
   "root": true,
   "env": {
+    "es6": true,
     "node": false,
     "browser": true
   },
-  "extends": [
-    "plugin:vue/essential",
-    "prettier",
-    "prettier/vue",
-    "plugin:prettier/recommended"
-  ],
-  "plugins": ["prettier", "@vue"],
+  "globals": {
+    "chrome": true
+  },
+  "extends": ["plugin:vue/vue3-recommended", "airbnb-base", "prettier", "plugin:prettier/recommended"],
+  "plugins": ["prettier"],
   "parserOptions": {
     "sourceType": "module",
     "ecmaVersion": 2020,
