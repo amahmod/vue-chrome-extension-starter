@@ -1,14 +1,21 @@
 const path = require('path')
+const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const { VueLoaderPlugin } = require('vue-loader')
+
+new webpack.DefinePlugin({
+  __VUE_PROD_DEVTOOLS__: false,
+})
 
 const mode = process.env.NODE_ENV || 'development'
 const prod = mode === 'production'
 
 const config = {
+  mode: prod ? 'production' : 'development',
+  devtool: prod ? 'source-map' : 'eval-cheap-module-source-map',
   context: path.resolve(__dirname, './src'),
   entry: {
     options: ['./option/option.js'],
@@ -17,9 +24,8 @@ const config = {
   },
   resolve: {
     alias: {
-      vue$: prod ? 'vue/dist/vue.runtime.min.js' : 'vue/dist/vue.esm.js',
+      vue: '@vue/runtime-dom',
     },
-    extensions: ['.js', 'vue'],
   },
   output: {
     path: path.join(__dirname, 'dist'),
@@ -36,21 +42,19 @@ const config = {
         },
       },
       {
-        test: /\.css$/,
-        use: [
-          /**
-           * MiniCssExtractPlugin doesn't support HMR.
-           * For developing, use 'style-loader' instead.
-           * */
-          prod ? MiniCssExtractPlugin.loader : 'style-loader',
-          'css-loader',
-        ],
+        test: /\.png$/,
+        use: {
+          loader: 'url-loader',
+          options: { limit: 8192 },
+        },
       },
       {
-        test: /\.scss$/,
+        test: /\.css$/,
         use: [
-          prod ? MiniCssExtractPlugin.loader : 'style-loader',
-          'sass-loader',
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: { hmr: !prod },
+          },
           'css-loader',
         ],
       },
