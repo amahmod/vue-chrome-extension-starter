@@ -8,7 +8,11 @@
     "pack": "cross-env NODE_ENV=production webpack --mode=production --progress",
     "zip": "node scripts/build-zip.js",
     "build": "npm run pack && npm run zip",
-    "lint": "eslint --ext .js,.vue --fix ./src"
+    "lint": "eslint --ext .js,.vue --fix ./src",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "src/**/*.{js,vue}": "npm run lint"
   },
   "keywords": [],
   "author": "",
@@ -32,6 +36,8 @@
     "eslint-plugin-vue": "^7.11.1",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.3.1",
+    "husky": "^6.0.0",
+    "lint-staged": "^11.0.0",
     "mini-css-extract-plugin": "^1.6.0",
     "prettier": "^2.3.1",
     "vue-loader": "^16.2.0",
