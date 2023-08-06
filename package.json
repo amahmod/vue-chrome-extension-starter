@@ -5,8 +5,12 @@
     "version": "0.0.0",
     "type": "module",
     "scripts": {
-        "dev": "vite",
         "build": "vue-tsc && vite build && npm run zip",
+        "check-types": "tsc --noemit",
+        "dev": "vite",
+        "format": "prettier --write './src/**/*.{js,vue,html,ts}'",
+        "lint": "eslint './src/**/*.{js,ts,vue}' && npm run check-types",
+        "lint:fix": "eslint --fix './src/**/*.{js,ts,vue}' && npm run check-types",
         "zip": "node scripts/build_zip.js"
     },
     "dependencies": {
@@ -14,10 +18,18 @@
     },
     "devDependencies": {
         "@crxjs/vite-plugin": "^1.0.14",
+        "@typescript-eslint/eslint-plugin": "^6.2.1",
+        "@typescript-eslint/parser": "^6.2.1",
         "@vitejs/plugin-vue": "^4.2.3",
+        "@vue/eslint-config-typescript": "^11.0.3",
         "archiver": "^5.3.1",
+        "eslint": "^8.46.0",
+        "eslint-config-prettier": "^9.0.0",
+        "eslint-plugin-prettier": "^5.0.0",
+        "eslint-plugin-vue": "^9.16.1",
         "typescript": "^5.0.2",
         "vite": "^4.4.5",
+        "vue-eslint-parser": "^9.3.1",
         "vue-tsc": "^1.8.5"
     }
 }
