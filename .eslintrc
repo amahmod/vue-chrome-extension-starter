@@ -15,6 +15,7 @@
     "plugins": ["@typescript-eslint", "prettier"],
     "rules": {
         "prettier/prettier": "error",
-        "vue/no-multiple-template-root": "off"
+        "vue/no-multiple-template-root": "off",
+        "@typescript-eslint/ban-ts-comment": "off"
     }
 }
